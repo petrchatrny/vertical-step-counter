@@ -1,0 +1,3 @@
+include ':verticalStepCounter'
+include ':app'
+rootProject.name = "verticalStepCounterView"

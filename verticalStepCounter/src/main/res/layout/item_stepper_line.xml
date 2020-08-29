@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Badge -->
+    <com.github.petrchatrny.VerticalStepCounterBadgeView
+        android:id="@+id/vertical_step_counter_badge"
+        android:layout_width="24dp"
+        android:layout_height="24dp" />
+
+    <LinearLayout
+        android:id="@+id/vertical_stepper_view_item_wrapper"
+        android:clipChildren="false"
+        android:orientation="vertical"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Text -->
+        <TextView
+            android:id="@+id/vertical_step_counter_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</merge>
