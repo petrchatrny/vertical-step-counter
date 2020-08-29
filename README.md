@@ -1,2 +1,2 @@
 # verticalStepCounter
- Modified version of VerticalStepper
+This software is a modified version of https://github.com/liefery/android-vertical-stepper-view
