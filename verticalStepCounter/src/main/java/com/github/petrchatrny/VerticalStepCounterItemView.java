@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.core.content.res.ResourcesCompat;
 
 class VerticalStepCounterItemView extends FrameLayout {
@@ -76,12 +77,12 @@ class VerticalStepCounterItemView extends FrameLayout {
         this.text.setText(text);
     }
 
-    private void setDataTogether() {
+    private void displayDataTogether() {
         setMarginBottom();
         badge.setBackground();
 
         // text color
-        if(VerticalStepCounterView.textColor == 0){
+        if (VerticalStepCounterView.textColor == 0) {
             text.setTextColor(ResourcesCompat.getColor(
                     getResources(),
                     R.color.vertical_step_counter_view_text_color,
@@ -91,10 +92,10 @@ class VerticalStepCounterItemView extends FrameLayout {
         }
 
         // text font
-        text.setTypeface(VerticalStepCounterView.font);
+        text.setTypeface(VerticalStepCounterView.textFont);
 
         // text size
-        if(VerticalStepCounterView.textSize != 0) {
+        if (VerticalStepCounterView.textSize != 0) {
             text.setTextSize(VerticalStepCounterView.textSize);
         }
     }
@@ -104,17 +105,18 @@ class VerticalStepCounterItemView extends FrameLayout {
 
         if (!getShowConnectorLine())
             params.bottomMargin = 0;
-        else params.bottomMargin = (int) Util.dpToPx(getContext(), VerticalStepCounterView.elementBottomMargin);
+        else
+            params.bottomMargin = (int) Util.dpToPx(getContext(), VerticalStepCounterView.elementBottomMargin);
     }
 
     @Override
-    protected void onDraw(Canvas canvas){
+    protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
         if (showConnectorLine) {
             connector.draw(canvas);
         }
-        setDataTogether();
+        displayDataTogether();
     }
 
     @Override

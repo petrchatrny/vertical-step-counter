@@ -12,7 +12,8 @@ public abstract class VerticalStepCounterAdapter extends BaseAdapter {
 
     private SparseArray<View> contentViews = new SparseArray<>(getCount());
 
-    public VerticalStepCounterAdapter() {}
+    public VerticalStepCounterAdapter() {
+    }
 
     public SparseArray<View> getContentViews() {
         return contentViews;
@@ -50,7 +51,7 @@ public abstract class VerticalStepCounterAdapter extends BaseAdapter {
         return position < getCount() - 1;
     }
 
-    private void applyData(VerticalStepCounterItemView itemView, int position){
+    private void applyData(VerticalStepCounterItemView itemView, int position) {
         itemView.setCircleNumber(getCircleNumber(position));
         itemView.setText(getText(position));
         itemView.setShowConnectorLine(showConnectorLine(position));

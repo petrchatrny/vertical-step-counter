@@ -2,6 +2,7 @@ package com.github.petrchatrny;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -10,13 +11,17 @@ import android.util.SparseArray;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class VerticalStepCounterView extends ListView {
-    protected static int numberColor, textColor, lineColor, badgeColor, textSize;
-    protected static Typeface font = Typeface.DEFAULT;
+    protected static int badgeNumberColor, badgeColor, lineColor, textColor, textSize;
+    protected static Typeface textFont = Typeface.DEFAULT;
     protected static int elementBottomMargin = 40;
 
     public VerticalStepCounterView(Context context) {
@@ -26,18 +31,47 @@ public class VerticalStepCounterView extends ListView {
 
     public VerticalStepCounterView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initialize();
+        initialize(context, attrs);
     }
 
     public VerticalStepCounterView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initialize();
+        initialize(context, attrs);
     }
 
     @TargetApi(21)
     public VerticalStepCounterView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        initialize();
+        initialize(context, attrs);
+    }
+
+    private void initialize(Context context, AttributeSet attrs) {
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.VerticalStepCounterView, 0, 0);
+        try {
+            badgeNumberColor = ta.getColor(
+                    R.styleable.VerticalStepCounterView_badgeNumberColor,
+                    ContextCompat.getColor(context, R.color.vertical_step_counter_view_badge_number_color));
+            badgeColor = ta.getColor(
+                    R.styleable.VerticalStepCounterView_badgeColor,
+                    ContextCompat.getColor(context, R.color.vertical_step_counter_view_badge_color));
+
+            lineColor = ta.getColor(
+                    R.styleable.VerticalStepCounterView_lineColor,
+                    ContextCompat.getColor(context, R.color.vertical_step_counter_view_line_color));
+
+            textColor = ta.getColor(
+                    R.styleable.VerticalStepCounterView_textColor,
+                    ContextCompat.getColor(context, R.color.vertical_step_counter_view_text_color));
+            textSize = ta.getInt(R.styleable.VerticalStepCounterView_textSize, 12);
+            textFont = ResourcesCompat.getFont(
+                    context,
+                    ta.getResourceId(R.styleable.VerticalStepCounterView_textFont, R.font.roboto));
+
+            elementBottomMargin = ta.getInt(R.styleable.VerticalStepCounterView_elementBottomMargin, 40);
+        } finally {
+            ta.recycle();
+        }
+        setDivider(null);
     }
 
     private void initialize() {
@@ -128,8 +162,8 @@ public class VerticalStepCounterView extends ListView {
         super.onMeasure(widthMeasureSpec, expandSpec);
     }
 
-    public void setNumberColor(int color) {
-        numberColor = color;
+    public void setBadgeNumberColor(int color) {
+        badgeNumberColor = color;
     }
 
     public void setTextColor(int color) {
@@ -144,15 +178,15 @@ public class VerticalStepCounterView extends ListView {
         badgeColor = color;
     }
 
-    public void setTextFont(Typeface typeface){
-        font = typeface;
+    public void setTextFont(Typeface typeface) {
+        textFont = typeface;
     }
 
-    public void setTextSize(int size){
+    public void setTextSize(int size) {
         textSize = size;
     }
 
-    public void setElementBottomMargin(int margin){
+    public void setElementBottomMargin(int margin) {
         elementBottomMargin = margin;
     }
 }

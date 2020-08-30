@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
+
 import java.util.Objects;
 
 class VerticalStepCounterBadgeView extends FrameLayout {
@@ -28,7 +30,7 @@ class VerticalStepCounterBadgeView extends FrameLayout {
         initialize(context);
     }
 
-    public VerticalStepCounterBadgeView(Context context, AttributeSet attrs, int defStyleAttr ) {
+    public VerticalStepCounterBadgeView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initialize(context);
     }
@@ -62,13 +64,13 @@ class VerticalStepCounterBadgeView extends FrameLayout {
         icon.setVisibility(View.GONE);
         number.setVisibility(View.VISIBLE);
         number.setText(String.valueOf(value));
-        if (VerticalStepCounterView.numberColor == 0) {
+        if (VerticalStepCounterView.badgeNumberColor == 0) {
             number.setTextColor(ResourcesCompat.getColor(
                     getResources(),
-                    R.color.vertical_step_counter_view_number_color,
+                    R.color.vertical_step_counter_view_badge_number_color,
                     null));
         } else {
-            number.setTextColor(VerticalStepCounterView.numberColor);
+            number.setTextColor(VerticalStepCounterView.badgeNumberColor);
         }
     }
 }

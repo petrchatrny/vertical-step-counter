@@ -13,7 +13,7 @@ class ConnectorLineDrawer {
 
     ConnectorLineDrawer(Context context) {
         int color;
-        if(VerticalStepCounterView.lineColor == 0){
+        if (VerticalStepCounterView.lineColor == 0) {
             color = ResourcesCompat.getColor(context.getResources(), R.color.vertical_step_counter_view_line_color, null);
 
         } else {

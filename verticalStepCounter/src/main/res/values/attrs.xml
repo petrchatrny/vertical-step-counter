@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="VerticalStepCounterView">
+        <attr name="badgeNumberColor" format="color" />
+        <attr name="badgeColor" format="color" />
+        <attr name="lineColor" format="color" />
+
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="integer" />
+        <attr name="textFont" format="reference" />
+
+        <attr name="elementBottomMargin" format="integer" />
+    </declare-styleable>
+
+</resources>
